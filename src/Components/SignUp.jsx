@@ -1,8 +1,28 @@
 import { Button, TextField } from "@mui/material";
+import { useRef, useState } from "react";
+import axios from "axios";
 
 const SignUp = () => {
-  const submitHandler = () => {
-    console.log("Hello World");
+  const [isLogin, setIsLogin] = useState(false);
+
+  const userNameRef = useRef(null);
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    const userName = userNameRef.current.value;
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+
+    const data = {
+      userName,
+      email,
+      password,
+    };
+
+    const res = await axios.post("http://192.168.29.141:8080/createUser", data);
+    console.log(res);
   };
 
   return (
@@ -16,6 +36,7 @@ const SignUp = () => {
             sx={{
               marginTop: "20px",
             }}
+            inputRef={userNameRef}
             label="Username"
             variant="outlined"
           />
@@ -23,13 +44,18 @@ const SignUp = () => {
             sx={{
               marginTop: "20px",
             }}
+            inputRef={emailRef}
             label="Email"
+            variant="outlined"
           />
           <TextField
             sx={{
               marginTop: "20px",
             }}
+            inputRef={passwordRef}
             label="Password"
+            type="password"
+            variant="outlined"
           />
 
           <Button
