@@ -13,6 +13,7 @@ const SignUp = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [responseMessage, setResponseMessage] = useState("");
+  const loginMessage = "Login on the chrome extension NOW!";
 
   const userNameRef = useRef(null);
   const emailRef = useRef(null);
@@ -107,7 +108,7 @@ const SignUp = () => {
         onClose={handleClose}
       >
         <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
-          {responseMessage}
+          {responseMessage + " " + loginMessage}
         </Alert>
       </Snackbar>
     </div>
