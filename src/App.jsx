@@ -1,5 +1,11 @@
+import SignUp from "./Components/SignUp";
+
 const App = () => {
-  return <div className="bg-red-500">App</div>;
+  return (
+    <>
+      <SignUp />
+    </>
+  );
 };
 
 export default App;
